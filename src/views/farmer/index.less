@@ -1,0 +1,281 @@
+.Farmer {
+    flex            : 1;
+    padding-top     : 70px;
+    background-color: #f1f8f2;
+
+    .header {
+        margin-top: 100px;
+
+        .golfFarm {
+            .golf {
+                width: 61px;
+            }
+
+            .farm {
+                width      : 218px;
+                margin-left: 5px;
+            }
+        }
+
+        .tips {
+            color        : #118b80;
+            font-size    : 16px;
+            margin-top   : 14px;
+            margin-bottom: 32px;
+        }
+
+        .middle {
+            width: 100%;
+        }
+
+        .stage {
+            color      : #118b80;
+            font-size  : 16px;
+            font-weight: 700;
+            margin-top : 25px;
+        }
+
+        .notice {
+            width           : 80%;
+            height          : 23px;
+            overflow        : hidden;
+            max-width       : 550px;
+            background-color: rgba(17, 139, 128, 0.1);
+            color           : #08a89a;
+            padding         : 5px 24px;
+            border-radius   : 16px;
+            margin-top      : 30px;
+
+            /deep/.el-carousel .el-carousel__item {
+                text-overflow: ellipsis;
+                overflow     : hidden;
+                white-space  : nowrap;
+            }
+
+            a {
+                outline: none;
+                color  : #08a89a;
+            }
+        }
+    }
+
+    .more {
+        color        : #118b80;
+        font-size    : 16px;
+        font-weight  : 700;
+        margin-bottom: 50px;
+        margin-top: 32px;
+    }
+
+    @media (max-width: 600px) {
+        .header {
+            margin-top: 50px;
+        }
+
+        .list {
+            width         : 100%;
+            margin-top    : 37px;
+            flex-direction: row;
+            flex-wrap     : wrap;
+            margin        : auto;
+            margin-top    : 32px;
+
+            .web-item {
+                display: none;
+            }
+
+            .m-item {
+                width           : 90%;
+                background-color: #fff;
+                display         : flex;
+                position        : relative;
+                margin-bottom   : 16px;
+
+                .left {
+                    padding: 20px 26px;
+                    flex   : 1;
+                }
+
+                .right {
+                    padding: 0 15px 0 10px;
+                }
+
+                .coin {
+                    display       : flex;
+                    flex-direction: row;
+                    align-items   : center;
+
+                    img {
+                        width : 40px;
+                        height: 40px;
+                    }
+
+                    p:nth-child(2) {
+                        margin-left: 8px;
+                        font-size  : 20px;
+                        font-weight: 700;
+                    }
+
+                    p:nth-child(3) {
+                        color      : #118b80;
+                        font-size  : 16px;
+                        margin-left: 10px;
+                    }
+                }
+
+                .tips {
+                    color     : #118b80;
+                    font-size : 14px;
+                    margin-top: 12px;
+
+                    .total {
+                        font-size  : 30px;
+                        margin-top : 4px;
+                        font-family: Bebas-Regular;
+                    }
+
+                    .usd {
+                        margin-top : 4px;
+                        font-size  : 16px;
+                        font-family: Bebas-Regular;
+                    }
+                }
+
+                .btn {
+                    width           : 95px;
+                    height          : 38px;
+                    padding         : 0 10px;
+                    border-radius   : 19px;
+                    background-color: #118b80;
+                    color           : #fff;
+                    font-size       : 16px;
+                    cursor          : pointer;
+                }
+
+                .disable {
+                    background-color: #abc2c0;
+                    cursor          : not-allowed;
+                }
+
+                .rank {
+                    width   : 62px;
+                    height  : 36px;
+                    right   : -5px;
+                    top     : -9px;
+                    position: absolute;
+                    z-index : 11;
+                }
+
+                .double {
+                    width   : 71px;
+                    height  : 50px;
+                    right   : -5px;
+                    top     : -13px;
+                    position: absolute;
+                    z-index : 11;
+                }
+            }
+        }
+    }
+
+    @media (min-width: 600px) {
+        .list {
+            width         : 100%;
+            max-width     : 1160px;
+            margin-top    : 37px;
+            flex-direction: row;
+            flex-wrap     : wrap;
+            margin        : auto;
+            margin-top    : 32px;
+
+            .m-item {
+                display: none;
+            }
+
+            .web-item {
+                width           : 280px;
+                background-color: #fff;
+                padding         : 30px;
+                margin          : 16px;
+                position        : relative;
+                border          : 1px solid transparent;
+
+                .coin {
+                    display       : flex;
+                    flex-direction: row;
+
+                    img {
+                        width : 40px;
+                        height: 40px;
+                    }
+
+                    p {
+                        margin-left: 8px;
+                        font-size  : 20px;
+                        font-weight: 700;
+                    }
+                }
+
+                .tips {
+                    color     : #118b80;
+                    font-size : 14px;
+                    margin-top: 25px;
+
+                    .total {
+                        font-family: Bebas-Regular;
+                        font-size  : 30px;
+                        margin-top : 4px;
+                    }
+
+                    .usd {
+                        margin-top : 4px;
+                        font-size  : 16px;
+                        font-family: Bebas-Regular;
+                    }
+                }
+
+                .btn {
+                    width           : 100%;
+                    margin-top      : 16px;
+                    height          : 38px;
+                    border-radius   : 19px;
+                    background-color: #118b80;
+                    color           : #fff;
+                    font-size       : 16px;
+                    cursor          : pointer;
+                }
+
+                .disable {
+                    background-color: #abc2c0;
+                    cursor          : not-allowed;
+                }
+
+                .rank {
+                    width   : 62px;
+                    height  : 36px;
+                    right   : -5px;
+                    top     : -9px;
+                    position: absolute;
+                    z-index : 11;
+                }
+
+                .double {
+                    width   : 71px;
+                    height  : 50px;
+                    right   : -5px;
+                    top     : -13px;
+                    position: absolute;
+                    z-index : 11;
+                }
+            }
+
+            .web-item:hover {
+                border: 1px solid #74EBE0;
+            }
+        }
+    }
+
+    
+}
+
+
