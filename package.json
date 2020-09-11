@@ -7,7 +7,7 @@
     "buildDev": "vue-cli-service build --mode dev",
     "buildTest": "vue-cli-service build --mode test",
     "buildPre": "vue-cli-service build --mode pre",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --mode pro",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -29,6 +29,8 @@
     "less-loader": "^6.2.0",
     "path": "^0.12.7",
     "postcss-pxtorem": "^5.1.1",
+    "terser-webpack-plugin": "^4.1.0",
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "vue": "^2.6.11",
     "vue-i18n": "^8.21.0",
     "vue-router": "^3.4.3",

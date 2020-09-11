@@ -1,0 +1,419 @@
+.Trade {
+    flex       : 1;
+    padding-top: 70px;
+
+    .coinHeader {
+        margin-top: 40px;
+
+        .golfFarm {
+            flex-direction: row;
+
+            img {
+                width: 61px;
+            }
+
+            p {
+                color      : #118b80;
+                font-size  : 44px;
+                font-weight: 700;
+                margin-left: 10px;
+            }
+        }
+
+        .tips {
+            color        : #118b80;
+            font-size    : 16px;
+            margin-top   : 14px;
+            margin-bottom: 10px;
+        }
+        .golffToken{
+            width: 80%;
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 16px;
+            text-align: center;
+            word-break: break-word;
+        }
+
+        .stage {
+            color      : #118b80;
+            font-size  : 16px;
+            font-weight: 700;
+            margin-top : 8px;
+        }
+    }
+
+    .list {
+        width         : 100%;
+        max-width     : 1160px;
+        margin-top    : 37px;
+        margin        : auto;
+        margin-top    : 32px;
+        flex-direction: row;
+        flex-wrap     : wrap;
+
+        .item {
+            width           : 280px;
+            background-color: #fff;
+            padding         : 30px;
+            margin          : 16px;
+            position        : relative;
+            border          : 1px solid transparent;
+            z-index         : 0;
+
+            .coin {
+                display       : flex;
+                flex-direction: row;
+
+                img {
+                    width : 40px;
+                    height: 40px;
+                }
+
+                p {
+                    font-size  : 20px;
+                    font-weight: 700;
+                    text-align : center;
+                    margin-left: 5px;
+                }
+            }
+
+            .tips {
+                color     : #118b80;
+                font-size : 14px;
+                margin-top: 25px;
+
+                .total {
+                    font-family: Bebas-Regular;
+                    font-size  : 30px;
+                    margin-top : 4px;
+                }
+            }
+
+            .btn {
+                width           : 100%;
+                margin-top      : 16px;
+                height          : 38px;
+                border-radius   : 19px;
+                background-color: #118b80;
+                color           : #fff;
+                font-size       : 16px;
+                cursor          : pointer;
+                flex-direction: row;
+            }
+
+            .withdraw {
+                background-color: transparent !important;
+                border          : 1px solid #118b80 !important;
+                color           : #118b80 !important;
+            }
+
+            .btnWrap {
+                width         : 100%;
+                flex-direction: row;
+                margin-top    : 16px;
+
+                .btni {
+                    width           : 100%;
+                    margin          : 0px 10px;
+                    height          : 38px;
+                    border-radius   : 19px;
+                    border          : 0;
+                    background-color: #118b80;
+                    color           : #fff;
+                    font-size       : 16px;
+                    cursor          : pointer;
+                    display         : flex;
+                    justify-content : center;
+                    align-items     : center;
+                    flex-direction  : row;
+                }
+
+                .disable {
+                    background-color: #abc2c0;
+                    cursor          : not-allowed;
+                }
+            }
+
+            .disable {
+                background-color: #abc2c0;
+                cursor          : not-allowed;
+            }
+        }
+
+        .item:after {
+            border-radius: 24px;
+        }
+    }
+
+    .coinFooter {
+        width        : 290px;
+        margin       : auto;
+        margin-top   : 24px;
+        margin-bottom: 30px;
+
+        .btn {
+            width        : 100%;
+            height       : 47px;
+            background   : #f1f8f2;
+            border       : 1px solid #118b80;
+            border-radius: 28px;
+            box-shadow   : 0px 12px 29px -10px rgba(17, 139, 128, 0.25);
+            color        : #118b80;
+            font-weight  : 700;
+            font-size    : 16px;
+            cursor       : pointer;
+            flex-direction: row;
+        }
+
+        .active {
+            background-color: #118b80;
+            color           : #fff;
+        }
+    }
+
+
+}
+
+@media (max-width: 920px) {
+    .Trade {
+        padding-top: 44px;
+
+        .minWalletBtn {
+            font-size  : 14px;
+            top        : 68px;
+            font-weight: 800;
+        }
+
+        .coinHeader {
+            margin-top: 70px;
+
+            .tips {
+                margin-bottom: 16px;
+            }
+
+            .golfFarm {
+                img {
+                    width: 45px;
+                }
+
+                p {
+                    font-size : 20px;
+                    align-self: flex-end;
+                }
+            }
+        }
+
+        .list {
+            margin-top: 16px;
+
+            .item {
+                padding: 16px 30px;
+
+                .tips {
+                    margin-top: 15px;
+                    font-size : 12px;
+
+                    .total {
+                        font-size: 24px;
+                    }
+                }
+
+                .btn {
+                    max-width: 160px;
+                    height   : 38px;
+                    font-size: 14px;
+                    flex-direction: row;
+                }
+
+                .btnWrap {
+
+                    .btni {
+                        font-size      : 14px;
+                        max-width      : 75px;
+                        font-size      : 13px;
+                        display        : flex;
+                        justify-content: center;
+                        align-items    : center;
+                        flex-direction : row;
+                    }
+
+                    .btni:nth-child(1) {
+                        margin: 0px 2px 0 0px;
+                    }
+
+                    .btni:nth-child(2) {
+                        margin: 0px 0px 0 2px;
+                    }
+
+                    .anbtni {
+                        max-width: 160px;
+                    }
+                }
+            }
+
+            .item:after {
+                border-radius: 8px;
+            }
+        }
+
+        .golBor {
+            border-radius: 8px;
+        }
+
+        .coinFooter {
+            width: 210px;
+
+            .btn {
+                font-size : 14px;
+                max-width : 160px;
+                height    : 38px;
+                text-align: center;
+                flex-direction: row;
+            }
+        }
+    }
+
+    .rainbow:before {
+        border-radius: 8px;
+    }
+}
+
+/deep/.el-dialog__header {
+    display: none;
+}
+
+/deep/.el-dialog__body {
+    padding: 0;
+}
+
+/deep/.el-dialog {
+    width        : 90%;
+    max-width    : 350px;
+    background   : #f1f8f2;
+    border-radius: 24px;
+    box-shadow   : 0px 12px 29px -10px rgba(17, 139, 128, 0.25);
+}
+
+.depositModel {
+    .depositContent {
+        width     : 285px;
+        padding   : 32px;
+        background: #f1f8f2;
+        position  : relative;
+
+        .tips {
+            text-align : center;
+            font-size  : 20px;
+            font-weight: 700;
+        }
+
+        .close {
+            position: absolute;
+            right   : 32px;
+            cursor  : pointer;
+
+            img {
+                width : 18px;
+                height: 18px;
+            }
+        }
+
+        .balance {
+            width      : 100%;
+            margin-top : 24px;
+            text-align : center;
+            color      : #118b80;
+            font-size  : 30px;
+            font-family: Bebas-Regular;
+        }
+
+        .btnWarp {
+            width     : 100%;
+            margin-top: 24px;
+            display   : flex;
+
+            .btn {
+                flex         : 1;
+                height       : 38px;
+                margin       : 0 4px;
+                background   : #f1f8f2;
+                border       : 1px solid #118b80;
+                border-radius: 28px;
+                color        : #118b80;
+                font-size    : 14px;
+                cursor       : pointer;
+                flex-direction: row;
+            }
+
+            .active {
+                background-color: #118b80;
+                color           : #fff;
+            }
+
+            .disable {
+                background-color: #abc2c0;
+            }
+        }
+
+        .number {
+            margin-top: 16px;
+            width     : 100%;
+
+            .el-form {
+                width: 90%;
+            }
+
+            .inputNumber {
+                /deep/.el-input__inner {
+                    user-select        : auto;
+                    width              : 100%;
+                    // border          : 1px solid #118b80;
+                    color              : #444;
+                    background-color   : #fff;
+                    font-size          : 20px;
+                    font-weight        : 700;
+                    font-family        : Bebas-Regular;
+                    padding            : 0px 20px;
+                    border-radius      : 100px;
+                }
+            }
+
+            input[type="number"] {
+                -webkit-appearance: none;
+            }
+
+            input[type="number"] {
+                -moz-appearance: textfield;
+            }
+
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+            }
+        }
+
+        .ratio {
+            width         : 100%;
+            flex-direction: initial;
+
+            div {
+                padding         : 5px;
+                flex            : 1;
+                margin          : 0 10px;
+                text-align      : center;
+                border-radius   : 100px;
+                border          : 1px solid transparent;
+                color           : #118b80;
+                font-family     : Bebas-Regular;
+                background-color: rgba(17, 139, 128, 0.08);
+                cursor          : pointer;
+            }
+
+            div:active {
+                border          : 1px solid #118b80;
+                background-color: rgba(17, 139, 128, 0.19);
+            }
+        }
+    }
+}

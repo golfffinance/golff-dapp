@@ -8,14 +8,18 @@
     </div>
     <div class="content flex">
       <p>{{$t('insuranceContent')}}</p>
-      <img src="../../assets/coming_soon.png" alt />
+      <img v-if="!isH5()" src="../../assets/coming_soon.png" alt />
+      <img v-if="isH5()" src="../../assets/coming_soon_m.png" alt />
     </div>
   </div>
 </template>
 
 <script>
+import { isH5 } from '@/utils/index';
 export default {
-
+    data () {
+        return { isH5: isH5 }
+    }
 }
 </script>
 
@@ -51,6 +55,25 @@ export default {
       width: 80%;
       max-width: 593px;
       margin-top: 55px;
+    }
+  }
+}
+@media (max-width: 920px) {
+  .GolfInsurance {
+    .header {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+      div {
+        margin-left: 10%;
+        img:nth-child(1) {
+          width: 12%;
+        }
+        img:nth-child(2) {
+          width: 70%;
+          margin-left: 5px;
+        }
+      }
     }
   }
 }

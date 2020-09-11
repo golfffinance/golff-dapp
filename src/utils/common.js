@@ -1,48 +1,52 @@
-import Vue from 'vue'
 import pool_abi from './json/POOLABI.json';
 import erc_abi from './json/ERC20.json';
 import Contract from 'web3-eth-contract'
-import Web3 from 'web3'
-Contract.setProvider(window.ethereum)
-// console.log(window.ethereum)
-// Contract.setProvider(new Web3.providers.WebsocketProvider('wss://rinkeby.infura.io/ws/v3/e785d37207f14487a811e41820b4fab8'));
+// import { Web3Provider } from '@ethersproject/providers'
 
 export const address = {
-    token: '0xbCa868791a8B78c81088Cebb5a0F96367098e0B2',
+    token: '0x488e0369f9bc5c40c002ea7c1fe4fd01a198801c',
+    uniswap: {
+        USDC_WETH: '0xdac17f958d2ee523a2206206994597c13d831ec7',
+        LINK_WETH: '0x514910771af9ca656af840dff83e8264ecf986ca',
+        HT_WETH: '0x6f259637dcd74c767781e37bc6133cd6a68aa161',
+        YFII_WETH: '0xa1d0E215a23d7030842FC67cE582a6aFa3CCaB83',
+        GXC_WETH: '0x2e93FE8d550a7B7E7b2e561cd45ceBccbAa79358'
+    },
     gxc: {
-        pool: '0xb07B71d02Fe312B9718C06a15A6932025DfBc757',
-        erc20: '0x0d8602f560ecdE04708328DCda78f5d5cf9ef011'
+        pool: '0x308A61E8b52430342295583EA3641B49ad832E22',
+        erc20: '0x2e93FE8d550a7B7E7b2e561cd45ceBccbAa79358'
     },
     ht: {
-        pool: '0x5A043127b6a0058Dbb06517D2cA18b59915fd047',
-        erc20: '0x96b3373956FAAEC0182275752Bb9bdC8A92960a1'
+        pool: '0x08ED8e144170F3D66260bcc34c8e7484b6Dd1ce8',
+        erc20: '0x6f259637dcD74C767781E37Bc6133cd6A68aa161'
     },
     link: {
-        pool: '0x9B818B60B0CE989500f804B604DF3e204C0A560E',
-        erc20: '0x469e7ba4D9e40476Af4a0A87F8BBBdad66D738da'
+        pool: '0x02cC8f37c64C48ceE5E3B81D8fe803D4968312eE',
+        erc20: '0x514910771AF9Ca656af840dff83E8264EcF986CA'
     },
     usdt: {
-        pool: '0x604CD2bD79a0D97B19A76081C5F0BDd0804C302b',
-        erc20: '0xDf7Ba0C628b982955b1EB0b0305B9C65aeF4BC9a'
+        pool: '0x214324c8A613ef7775B9180aAb1E239DE6Db8395',
+        erc20: '0xdAC17F958D2ee523a2206206994597C13D831ec7'
     },
-    eth: {
-        pool: '0x715f7e59Ec38E14F223595D3C4E380D99bC84138',
-        erc20: '0x42438B93AfBdBd106Dc0e420BA058b2563D6ce25'
+    weth: {
+        pool: '0xC46188A5a7c1dFB04a99903544660EA83f986FB8',
+        erc20: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'
     },
     yfii: {
-        pool: '0xE1c6db417Ef51A3E0A402fad9e2028eDE1812e61',
-        erc20: '0x18Ea21B9D7a8E2879FF2D227AB95e6638b3A291E'
-    },
+        pool: '0x4E81626eb309B9690A4a3a4592b5f29AAac0F183',
+        erc20: '0xa1d0E215a23d7030842FC67cE582a6aFa3CCaB83'
+    }
 }
 
 
 export const initContracts = () => {
+    Contract.setProvider(window.ethereum); 
     return {
         address: address,
         token: new Contract(erc_abi.abi, address.token),
         gxc: {
-            pool: new Contract(pool_abi.abi,address.gxc.pool),
-            erc20: new Contract(erc_abi.abi,address.gxc.erc20)
+            pool: new Contract(pool_abi.abi, address.gxc.pool),
+            erc20: new Contract(erc_abi.abi, address.gxc.erc20)
         },
         ht: {
             pool: new Contract(pool_abi.abi, address.ht.pool),
@@ -56,15 +60,48 @@ export const initContracts = () => {
             pool: new Contract(pool_abi.abi, address.usdt.pool),
             erc20: new Contract(erc_abi.abi, address.usdt.erc20)
         },
-        eth: {
-            pool: new Contract(pool_abi.abi, address.eth.pool),
-            erc20: new Contract(erc_abi.abi, address.eth.erc20)
+        weth: {
+            pool: new Contract(pool_abi.abi, address.weth.pool),
+            erc20: new Contract(erc_abi.abi, address.weth.erc20)
         },
         yfii: {
             pool: new Contract(pool_abi.abi, address.yfii.pool),
             erc20: new Contract(erc_abi.abi, address.yfii.erc20)
         },
-        
+
+    }
+}
+
+export const initContractsSend = () => {
+    Contract.setProvider(window.ethereum || 'wss://mainnet.infura.io/ws/v3/e785d37207f14487a811e41820b4fab8') 
+    return {
+        address: address,
+        token: new Contract(erc_abi.abi, address.token),
+        gxc: {
+            pool: new Contract(pool_abi.abi, address.gxc.pool),
+            erc20: new Contract(erc_abi.abi, address.gxc.erc20)
+        },
+        ht: {
+            pool: new Contract(pool_abi.abi, address.ht.pool),
+            erc20: new Contract(erc_abi.abi, address.ht.erc20)
+        },
+        link: {
+            pool: new Contract(pool_abi.abi, address.link.pool),
+            erc20: new Contract(erc_abi.abi, address.link.erc20)
+        },
+        usdt: {
+            pool: new Contract(pool_abi.abi, address.usdt.pool),
+            erc20: new Contract(erc_abi.abi, address.usdt.erc20)
+        },
+        weth: {
+            pool: new Contract(pool_abi.abi, address.weth.pool),
+            erc20: new Contract(erc_abi.abi, address.weth.erc20)
+        },
+        yfii: {
+            pool: new Contract(pool_abi.abi, address.yfii.pool),
+            erc20: new Contract(erc_abi.abi, address.yfii.erc20)
+        },
+
     }
 }
 

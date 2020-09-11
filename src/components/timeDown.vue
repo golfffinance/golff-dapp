@@ -35,14 +35,15 @@ export default {
 
 <style lang="less" scoped>
 .TimeDown{
-    width: 90%;
+    width: 80%;
     max-width: 400px;
     font-family: Bebas-Regular;
     .spar{
         display: flex;
         color: #118B80;
-        font-size: 36px;
+        font-size: 30px;
         padding: 5px 40px;
+        font-weight: 400;
         div{
             flex:1;
             text-shadow:0px 5px 5px rgba(17,139,128,0.5);

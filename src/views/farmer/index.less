@@ -4,7 +4,7 @@
     background-color: #f1f8f2;
 
     .header {
-        margin-top: 100px;
+        margin-top: 40px;
 
         .golfFarm {
             .golf {
@@ -21,22 +21,36 @@
             color        : #118b80;
             font-size    : 16px;
             margin-top   : 14px;
-            margin-bottom: 32px;
+            margin-bottom: 10px;
+            text-align   : center;
+        }
+        .golffToken{
+            width: 80%;
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 16px;
+            text-align: center;
+            word-break: break-word;
         }
 
         .middle {
             width: 100%;
         }
-
+        .disConnet{
+            width: 80%;
+            max-width: 920px;
+            text-align: center;
+            color: #333;
+        }
         .stage {
             color      : #118b80;
             font-size  : 16px;
             font-weight: 700;
-            margin-top : 25px;
+            margin-top : 15px;
         }
 
         .notice {
-            width           : 80%;
+            width           : 78%;
             height          : 23px;
             overflow        : hidden;
             max-width       : 550px;
@@ -53,8 +67,32 @@
             }
 
             a {
-                outline: none;
-                color  : #08a89a;
+                text-decoration: none;
+                color          : #08a89a;
+                display        : flex;
+
+                .medium {
+                    display    : flex;
+                    align-items: center;
+
+                    p {
+                        margin-top: 2px;
+                    }
+                }
+
+                .speaker {
+                    width       : 19px;
+                    height      : 23px;
+                    margin-right: 8px;
+                }
+            }
+        }
+
+        .notice:hover {
+            background-color: rgba(255, 100, 0, 0.1);
+
+            a {
+                color: rgba(255, 100, 0, 1)
             }
         }
     }
@@ -64,7 +102,7 @@
         font-size    : 16px;
         font-weight  : 700;
         margin-bottom: 50px;
-        margin-top: 32px;
+        margin-top   : 32px;
     }
 
     @media (max-width: 600px) {
@@ -84,41 +122,52 @@
                 display: none;
             }
 
+            .close {
+                background-color: transparent !important;
+            }
+
             .m-item {
                 width           : 90%;
                 background-color: #fff;
                 display         : flex;
                 position        : relative;
-                margin-bottom   : 16px;
+                margin-bottom   : 22px;
+                border-radius   : 8px;
 
                 .left {
-                    padding: 20px 26px;
+                    padding: 17px 26px;
                     flex   : 1;
                 }
 
                 .right {
-                    padding: 0 15px 0 10px;
+                    padding: 0 8px 0 8px;
+
+                    .btn {
+                        width    : 80px;
+                        font-size: 14px;
+                    }
                 }
 
                 .coin {
                     display       : flex;
                     flex-direction: row;
                     align-items   : center;
+                    position      : absolute;
 
                     img {
-                        width : 40px;
-                        height: 40px;
+                        width : 28px;
+                        height: 28px;
                     }
 
                     p:nth-child(2) {
                         margin-left: 8px;
-                        font-size  : 20px;
+                        font-size  : 16px;
                         font-weight: 700;
                     }
 
                     p:nth-child(3) {
                         color      : #118b80;
-                        font-size  : 16px;
+                        font-size  : 12px;
                         margin-left: 10px;
                     }
                 }
@@ -126,25 +175,40 @@
                 .tips {
                     color     : #118b80;
                     font-size : 14px;
-                    margin-top: 12px;
-
+                    margin-top: 35px;
+                    .obtain{
+                        font-size: 12px;
+                    }
+                    .obtain0{
+                        color: #333333;
+                    }
                     .total {
-                        font-size  : 30px;
+                        font-size  : 20px;
                         margin-top : 4px;
                         font-family: Bebas-Regular;
                     }
 
                     .usd {
                         margin-top : 4px;
-                        font-size  : 16px;
+                        font-size  : 14px;
                         font-family: Bebas-Regular;
                     }
-                }
 
+                    .rate {
+                        color     : #666666;
+                        margin-top: 5px;
+                        font-size : 13px;
+
+                        span {
+                            font-weight: 700;
+                        }
+                    }
+                }
+                
                 .btn {
                     width           : 95px;
                     height          : 38px;
-                    padding         : 0 10px;
+                    padding         : 0;
                     border-radius   : 19px;
                     background-color: #118b80;
                     color           : #fff;
@@ -158,21 +222,30 @@
                 }
 
                 .rank {
-                    width   : 62px;
-                    height  : 36px;
+                    width   : 41px;
+                    height  : 24px;
                     right   : -5px;
                     top     : -9px;
                     position: absolute;
                     z-index : 11;
                 }
 
+                .rank1 {
+                    width : 41px;
+                    height: 24px;
+                }
+
                 .double {
                     width   : 71px;
-                    height  : 50px;
+                    height  : 34px;
                     right   : -5px;
                     top     : -13px;
                     position: absolute;
                     z-index : 11;
+                }
+
+                .double_en {
+                    width: 105px;
                 }
             }
         }
@@ -190,6 +263,10 @@
 
             .m-item {
                 display: none;
+            }
+
+            .close {
+                background-color: transparent !important;
             }
 
             .web-item {
@@ -231,6 +308,15 @@
                         margin-top : 4px;
                         font-size  : 16px;
                         font-family: Bebas-Regular;
+                    }
+
+                    .rate {
+                        color    : #666666;
+                        font-size: 13px;
+
+                        span {
+                            font-weight: 700;
+                        }
                     }
                 }
 
@@ -275,7 +361,46 @@
         }
     }
 
-    
+
 }
 
+@media (max-width: 920px) {
+    .Farmer {
+        padding-top: 44px;
 
+        .header {
+            margin-top: 70px;
+
+            .minWalletBtn {
+                font-size  : 14px;
+                top        : 68px;
+                font-weight: 800;
+            }
+
+            .golfFarm {
+                .golf {
+                    width: 35px;
+                }
+
+                .farm {
+                    width      : 106px;
+                    margin-left: 15px;
+                }
+            }
+
+            .notice {
+                a {
+                    font-size: 14px;
+                }
+            }
+        }
+
+        .middle {
+            .TimeDown {
+                .spar {
+                    font-size: 30px;
+                }
+            }
+        }
+    }
+}

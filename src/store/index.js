@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-
+import errorHandler from '@/utils/errorHandler';
+import i18n from '../plugins/i18n'
 Vue.use(Vuex);
 const debug = process.env.NODE_ENV !== 'production';
 const state = {
@@ -18,7 +19,9 @@ const state = {
     coinList: [],
     xCoin: 'gxc',
     reloadTime: '',
-    disConnet: false
+    disConnet: false,
+    isRouterAlive: true,
+    routerLoading: false
 };
 const mutations = {
     updateLang (state, lang) {
@@ -59,6 +62,12 @@ const mutations = {
     },
     updateDisNotConnet (state, value) {
         state.disConnet = value;
+    },
+    updateIsRouterAlive (state, value) {
+        state.isRouterAlive = value;
+    },
+    updateRouterLoading (state, value) {
+        state.routerLoading = value;
     }
 };
 const actions = {
@@ -68,6 +77,25 @@ const actions = {
     }, params) {
         return commit('updateCoinList', params);
     },
+    getEthereumAddress ({
+        commit,
+        state
+    }) {
+        if (!window.ethereum) {
+            Vue.prototype.$message({
+                message: i18n.t('PleaseInstall'),
+                type: 'warning'
+            });
+            return;
+        }
+        ethereum.enable().then((accounts) => {
+            console.log('accounts', accounts)
+            commit('updateAccountsChanged', accounts[0])
+            commit('updateWalletModel', false);
+        }).catch((err) => {
+            errorHandler(err);
+        })
+    }
 };
 export default new Vuex.Store({
     state,

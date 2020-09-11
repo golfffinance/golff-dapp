@@ -1,4 +1,24 @@
 import Vue from 'vue'
+
+export const numToString = (num) => {
+    let m = num.toExponential().match(/\d(?:\.(\d*))?e([+-]\d+)/);
+    return num.toFixed(Math.max(0, (m[1] || '').length - m[2]));
+};
+
+export const mToUpperCase = (e) => {
+    if(e === 'weth'){
+        return 'wETH';
+    }
+    return e.toUpperCase();
+}
+
+export const keepDecimalsDown = (num,digits = 4) =>{
+    num = num + '';
+    if(num.indexOf('.') === -1 || (num.indexOf('.') > -1 && num.split('.')[1].length <= 3)){
+        return num;
+    }
+    return Math.floor(num * eval(`1e${digits}`)) / eval(`1e${digits}`);
+}
 export const hiddenAddress = (e) => {
     if (e && e.length > 0) {
         let left = e.substring(0, 6);
@@ -116,9 +136,9 @@ export const leftTime = (e) => {
         if (Time.seconds < 10) {
             Time.seconds = '0' + Time.seconds;
         }
-
         return Time;
     } else {
         return Time;
     }
+    
 }

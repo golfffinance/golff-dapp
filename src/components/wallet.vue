@@ -16,16 +16,72 @@
         </div>
         <div class="item golBor">
           <div class="flex name">
+            <img src="../assets/ImToken.jpg" alt />
+            ImToken
+          </div>
+          <!-- <div class="connected" v-if="false"></div> -->
+          <el-tooltip placement="top">
+            <div slot="content" class="flex">
+              <img class="urlErCode" src="../assets/urlErCode.png" alt />
+             <p class="urlErCodeTip">{{$t('PleaseWallet',{x: 'ImToken'})}}</p>
+            </div>
+            <div class="flex btn">{{$t('connect')}}</div>
+          </el-tooltip>
+        </div>
+        <div class="item golBor">
+          <div class="flex name">
             <img src="../assets/BitKeep.png" alt />
             BitKeep
           </div>
           <!-- <div class="connected" v-if="false"></div> -->
           <el-tooltip placement="top">
-            <div slot="content">
-              <img class="BitKeepErCode" src="../assets/BitKeepErCode.png" alt />
-              <p class="BitKeepErCodeTip">{{$t('PleaseBitKeep')}}</p>
+            <div slot="content" class="flex">
+              <img class="urlErCode" src="../assets/urlErCode.png" alt />
+              <p class="urlErCodeTip">{{$t('PleaseWallet',{x: 'BitKeep'})}}</p>
             </div>
-            <div class="flex btn" @click="changeBitKeep">{{$t('connect')}}</div>
+            <div class="flex btn">{{$t('connect')}}</div>
+          </el-tooltip>
+        </div>
+        <div class="item golBor">
+          <div class="flex name">
+            <img src="../assets/Huobi.png" alt />
+            {{$t('WalletHuobi')}}
+          </div>
+          <!-- <div class="connected" v-if="false"></div> -->
+          <el-tooltip placement="top">
+            <div slot="content" class="flex">
+              <img class="urlErCode" src="../assets/urlErCode.png" alt />
+              <p class="urlErCodeTip">{{$t('PleaseWallet',{x: $t('WalletHuobi')})}}</p>
+            </div>
+            <div class="flex btn">{{$t('connect')}}</div>
+          </el-tooltip>
+        </div>
+        <div class="item golBor">
+          <div class="flex name">
+            <img src="../assets/Math.png" alt />
+            {{$t('WalletMath')}}
+          </div>
+          <!-- <div class="connected" v-if="false"></div> -->
+          <el-tooltip placement="top">
+            <div slot="content" class="flex">
+              <img class="urlErCode" src="../assets/urlErCode.png" alt />
+             <p class="urlErCodeTip">{{$t('PleaseWallet',{x: $t('WalletMath')})}}</p>
+            </div>
+            <div class="flex btn">{{$t('connect')}}</div>
+          </el-tooltip>
+        </div>
+        <div class="item golBor">
+          <div class="flex name">
+            <img src="../assets/TokenPocket.png" alt />
+            TokenPocket
+          </div>
+          <!-- <div class="connected" v-if="false"></div> -->
+          <el-tooltip placement="top">
+            <div slot="content" class="flex">
+              <img class="urlErCode" src="../assets/urlErCode.png" alt />
+              <p class="urlErCodeTip">{{$t('PleaseWallet',{x: 'TokenPocket'})}}</p>
+            </div>
+            <div class="flex btn">{{$t('connect')}}</div>
           </el-tooltip>
         </div>
         <div class="flex closeChange" @click="closeChange()">{{$t('disconnected')}}</div>
@@ -47,7 +103,7 @@
         </div>
         <div class="balance">{{gofBalance}}</div>
         <div class="btnWarp">
-          <div class="btn flex">{{$t('ViewonEtherscan')}}</div>
+          <div class="btn flex" @click="etherscan">{{$t('ViewonEtherscan')}}</div>
           <div class="btn flex" @click="closeChange()">{{$t('Disconnected')}}</div>
         </div>
       </div>
@@ -56,14 +112,18 @@
       <p v-if="this.address && this.address.length>0">{{hiddenAddress(this.address)}}</p>
       <p v-else>{{$t('connectWallet')}}</p>
     </div>
-    <div class="myWalletBtn flex"  v-if="this.address && this.address.length>0" @click="myWalletBtn">{{$t('MyGOF')}}</div>
+    <div class="myWalletBtn flex" v-if="this.address && this.address.length>0" @click="myWalletBtn">
+      <img src="../assets/coin_gof.png" />
+      <p>{{$t('MyGOF')}}</p>
+    </div>
   </div>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex';
 import errorHandler from '@/utils/errorHandler';
-import { isH5, hiddenAddress } from '@/utils/index';
+import { isH5, hiddenAddress, keepDecimalsDown } from '@/utils/index';
+import BigNumber from 'bignumber.js';
 export default {
   data () {
     return {
@@ -72,7 +132,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['walletModel', 'myWalletModel', 'address', 'xCoin']),
+    ...mapState(['walletModel', 'myWalletModel', 'address', 'xCoin', 'reloadTime']),
   },
   watch: {
     address () {
@@ -80,7 +140,7 @@ export default {
         this.getBalance();
       }
     },
-    eloadTime () {
+    reloadTime () {
       if (this.address && this.address.length > 0) {
         this.getBalance();
       }
@@ -92,6 +152,10 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['getEthereumAddress']),
+    etherscan () {
+      window.open("https://etherscan.io/address/" + this.address)
+    },
     walletBtn () {
       this.$store.commit('updateWalletModel', true);
     },
@@ -99,7 +163,6 @@ export default {
       this.$store.commit('updateWalletModel', false);
     },
     myWalletBtn () {
-
       if (this.address && this.address.length > 0) {
         this.$store.commit('updateMyWalletModel', true);
       } else {
@@ -113,25 +176,16 @@ export default {
       this.$store.commit('updateAccountsChanged', undefined)
     },
     getBalance () {
-      this.contract.token.methods.balanceOf(this.address).call().then(result => {
-        this.gofBalance = result / 1e18;
-      }).catch(err => {
-        errorHandler(err);
-      });
+      setTimeout(() => {
+        this.contract.token.methods.balanceOf(this.address).call().then(result => {
+          this.gofBalance = keepDecimalsDown(new BigNumber(result).div(1e18));
+        }).catch(err => {
+          errorHandler(err);
+        });
+      }, 1000)
     },
     changeMetaMask () {
-      ethereum.enable()
-        .then((accounts) => {
-          console.log('accounts', accounts)
-          this.$store.commit('updateAccountsChanged', accounts[0])
-          this.$store.commit('updateWalletModel', false);
-        })
-        .catch((err) => {
-          errorHandler(err);
-        })
-    },
-    changeBitKeep () {
-
+      this.getEthereumAddress();
     }
   }
 }
@@ -162,10 +216,10 @@ export default {
     cursor: pointer;
   }
   .myWalletBtn {
-    position: fixed;
+    position: absolute;
     z-index: 99;
     top: 100px;
-    right: 10px;
+    right: -95px;
     width: 120px;
     height: 44px;
     background: #f1f8f2;
@@ -174,6 +228,14 @@ export default {
     box-shadow: 0px 12px 29px -10px rgba(17, 139, 128, 0.25);
     color: #ff6400;
     cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    img {
+      width: 25px;
+    }
+    p {
+      margin-left: 5px;
+    }
   }
   .minWalletBtn {
     position: fixed;
@@ -353,13 +415,17 @@ export default {
       font-size: 14px;
       text-align: center;
       cursor: pointer;
+      a {
+        color: #118b80;
+      }
     }
   }
 }
-.BitKeepErCode {
+
+.urlErCode {
   width: 200px;
 }
-.BitKeepErCodeTip {
+.urlErCodeTip {
   width: 100%;
   margin-top: 10px;
   font-size: 16px;

@@ -1,5 +1,5 @@
-const Farmer = () => import('@/views/farmer/index.vue');
-const Exchange = () => import('@/views/farmer/exchange.vue');
+const Farmer = () => import(/* webpackChunkName:'Farmer' */ '@/views/farmer/index.vue');
+const Trade = () => import(/* webpackChunkName:'Farmer' */ '@/views/farmer/trade.vue');
 const Insurance = () => import('@/views/insurance/index.vue');
 const Lend = () => import('@/views/lend/index.vue');
 const Vault = () => import('@/views/vault/index.vue');
@@ -23,12 +23,12 @@ const routes = [
         }
     },
     {
-        path: '/exchange',
-        name: 'Exchange',
-        component: Exchange,
+        path: '/trade',
+        name: 'Trade',
+        component: Trade,
         meta: {
-            title: 'Exchange',
-            key: 'exchange'
+            title: 'Trade',
+            key: 'trade'
         }
     },
     {
